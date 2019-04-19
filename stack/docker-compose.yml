@@ -1,0 +1,64 @@
+#
+# Example ZCMD Demo Stack
+#
+# Updated 20190419.1
+
+version: "3.5"
+
+services:
+      
+  webserver:
+    labels:
+      - purpose=Serve up the web file content
+    image: bigfathom/myubuntu18-apache-webserver
+    volumes:
+      - type: bind
+        source: ../runtime-shared-files/webserver/www
+        target: /var/www
+      - type: bind
+        source: ./custom/${ENVIRONMENT_CONTEXT}/init/myinit.sh
+        target: /var/bucket/myinit.sh    
+    ports:
+      - "${WEBSITE_PORT80}:80"
+    expose:
+      - "80"
+      - "443"
+      - "8025"
+    user: root
+    command: "/var/bucket/myinit.sh DEV"
+    networks:
+      - admin_webnet
+      
+  db:
+    image: mysql:5
+    restart: always
+    environment:
+        MYSQL_DATABASE: demo_db
+        MYSQL_ROOT_PASSWORD: example
+        MYSQL_USER: demouser
+        MYSQL_PASSWORD: example
+    networks:
+      - admin_webnet
+
+  tool_adminer:
+    image: adminer:latest
+    restart: always
+    ports:
+      - "$ADMINER_PORT80:8080"
+    networks:
+      - admin_webnet
+      
+  tool_phpmyadmin: 
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    environment:
+        PMA_HOST: db
+    ports:
+      - "$PHPMYADMIN_PORT80:80"
+    networks:
+      - admin_webnet
+      
+networks:
+  admin_webnet:
+    external: true
+
