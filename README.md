@@ -5,7 +5,7 @@ Demonstrate some features of the [ZCMD framework](https://github.com/bah-insigni
 
 ## Operating System Notes
 
-This stack uses the docker-compose file binding feature. That feature works great on Linux and good enough on Mac. It is a nightmare to get bind mounts working nicely on Windows. However, you can make it work on WSL by using the ZCMD `zc-wsl-fixer.sh` script and then running this stack from the directory suggested by that helper script. 
+This stack uses the docker-compose file binding feature. That feature works great on Linux and good enough on Mac. It is a nightmare to get bind mounts working nicely on Windows. However, you can make it work on WSL by using the ZCMD `zc-wslfixer.sh` script and then running this stack from the directory suggested by that helper script. 
 
 CONVENTIONS
 ===========
