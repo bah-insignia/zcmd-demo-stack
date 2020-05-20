@@ -1,7 +1,11 @@
-PURPOSE
-=======
-Demonstrate some features of the ZCMD framework by providing a sample 
+# PURPOSE
+
+Demonstrate some features of the [ZCMD framework](https://github.com/bah-insignia/zcmd) by providing a sample 
 "zcmd stack" of containers.
+
+## Operating System Notes
+
+This stack uses the docker-compose file binding feature. That feature works great on Linux and good enough on Mac. It is a nightmare to get bind mounts working nicely on Windows. However, you can make it work on WSL by using the ZCMD `zc-wsl-fixer.sh` script and then running this stack from the directory suggested by that helper script. 
 
 CONVENTIONS
 ===========
