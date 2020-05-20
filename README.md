@@ -32,3 +32,10 @@ Adminer -- A database management program like phpmyadmin
 Mysql -- A relational database management system
  * Documentation available at https://hub.docker.com/_/mysql
  * Look in the docker-compose.yml for configuration information
+ 
+# Troubleshooting
+ 
+*ISSUE*: In Windows WSL, when starting the stack, the webserver fails to bind the files. Message may contain text like the following:
+`"Message":"Unhandled exception: Filesharing has been cancelled","StackTrace":"   at Docker.ApiServices.Mounting.FileSharing.`
+
+*SOLUTION*: Enable filesharing in the Docker for windows Settings panel. See <https://github.com/docker/for-win/issues/5958> for more details.
